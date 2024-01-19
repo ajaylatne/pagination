@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Django Paginator example</title>
+</head>
+<body>
+    <!-- iterating posts -->
+	<div >
+		{% for post in page_obj.object_list %}
+			<h1>{{post.title}}</h1>
+            <p>{{post.content}}</p>
+            <hr/>
+		{% endfor %}
+	</div>
+
+
+    <!-- prev and next button -->
+	<center>
+		{% if page_obj.has_previous %}
+			<a href="?page={{page_obj.previous_page_number}}">
+                <button><</button>
+            </a>
+		{% endif %}
+
+		<span>{{page_obj.number}}</span>
+
+		{%if page_obj.has_next %}
+			<a href="?page={{page_obj.next_page_number}}">
+                <button>></button>
+            </a>
+		{% endif %}
+	</center>
+</body>
+</html>
